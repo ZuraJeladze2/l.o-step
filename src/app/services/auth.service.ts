@@ -35,7 +35,7 @@ export class AuthService {
   }
 
   /**
-   * Generates a random numeric ID.
+   * Generates a random numeric ID. (for firebase database)
    * @returns A random numeric ID as a string.
    */
   private generateRandomId(): string {
@@ -44,11 +44,11 @@ export class AuthService {
 
 
   /**
-    * Counts the highest index in the database.
+    * Counts the highest index in the database. (for firebase database)
     * @returns An observable of the highest index.
     */
   returnHighestIndexInDB(): Observable<number> {
-    return this.http.get<User[]>(`${this.apiUrl}/users.json`).pipe(
+    return this.http.get<User[]>(`${this.apiUrl}/users`).pipe(
       map(users => {
         if (users) {
           return users.length;
@@ -60,25 +60,15 @@ export class AuthService {
   }
 
 
-
   /**
-   * Creates a new user with a random numeric ID.
-   * @param user The user data to be created.
-   * @returns An observable of the created user data.
-   */
-  createUser(user: Partial<User>): Observable<User> {
+    * Creates a new user.
+    * @param user The user data to be created.
+    * @returns An observable of the created user data.
+    */
+  createUser(user: Partial<User>) {
     user.email = user.email?.toLowerCase();
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const id = this.generateRandomId(); // Generate a random ID
-    user.id = +id; // Assign the generated ID to the user data
-    return this.returnHighestIndexInDB().pipe(
-      switchMap(index => {
-        console.log(index);
-        
-        return this.http.put<User>(`${this.apiUrl}/users/${index}.json`, user, { headers });
-      }
-      )
-    )
+    return this.http.post<User>(`${this.apiUrl}/users`, user, { headers });
   }
 
 
@@ -89,7 +79,7 @@ export class AuthService {
    */
   updateUser(user: User): Observable<User> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.put<User>(`${this.apiUrl}/users/${user.id}.json`, user, { headers });
+    return this.http.put<User>(`${this.apiUrl}/users/${user.id}`, user, { headers });
   }
 
   /**
@@ -98,7 +88,7 @@ export class AuthService {
    * @returns An observable of the deleted user data.
    */
   deleteUser(id: string): Observable<User> {
-    return this.http.delete<User>(`${this.apiUrl}/users/${id}.json`);
+    return this.http.delete<User>(`${this.apiUrl}/users/${id}`);
   }
 }
 
