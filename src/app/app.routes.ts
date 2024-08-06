@@ -7,13 +7,11 @@ export const routes: Routes = [
   {
     path: '',
     component: MainComponent,
-    canActivate: [authGuard] // Protects access to this route with the authGuard
   },
   {
     // Path for the default page (users list)
     path: 'users',
     component: UsersComponent,
-    canActivate: [authGuard] // Protects access to this route with the authGuard
   },
   {
     // Path for creating a new user
