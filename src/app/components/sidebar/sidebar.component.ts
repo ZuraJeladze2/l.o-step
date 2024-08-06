@@ -106,6 +106,11 @@ export class SidebarComponent implements OnDestroy {
     };
 
     const userObj = this.userForm.getRawValue();
+    if(userObj.id === '' || userObj.id === null) {
+      delete userObj.id;
+    }
+    console.log(userObj);
+    
     this.userFacade.createUser(userObj)
       .pipe(takeUntil(this.unSubscriber))
       .subscribe(() => {
