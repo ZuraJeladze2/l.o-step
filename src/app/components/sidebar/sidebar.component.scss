@@ -3,6 +3,18 @@
     padding: 30px 25px;
 
 
+    .links{
+        gap: 20px;
+
+        li{
+            list-style-type: none;
+            
+            a{
+                color: #000;
+            }
+        }
+    }
+    
     .toggle-view {
         h4 {
             flex-grow: 1;

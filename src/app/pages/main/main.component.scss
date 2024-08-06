@@ -17,9 +17,13 @@ mat-card-title {
     font-weight: bold;
 }
 
-mat-card-content ul {
-    list-style-type: disc;
-    margin-left: 20px;
+mat-card-content{
+    overflow-x: hidden;
+
+    ul {
+        list-style-type: disc;
+        margin-left: 20px;
+    }
 }
 
 .card .disable{
@@ -42,4 +46,12 @@ mat-card-content ul {
 }
 .card .disable:hover{
     backdrop-filter: blur(3px) brightness(0.5);
+}
+
+
+
+@media (max-width: 1300px) {
+    .card {
+        margin-inline: 0;
+    }
 }
