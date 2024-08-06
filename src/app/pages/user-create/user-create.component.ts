@@ -154,6 +154,11 @@ export class UserCreateComponent implements OnDestroy {
         });
     } else {
       this.snackbar.open('User created', '', { duration: 1000 });
+      console.log(userObj);
+      if (!userObj.id) {
+        delete userObj.id;
+      }
+      console.warn(userObj);
       this.userFacade.createUser(userObj)
         .pipe(takeUntil(this.unSubscriber))
         .subscribe((user) => {
