@@ -10,6 +10,10 @@ table {
     app-table {
       width: 100vw !important;
     }
+
+    .mat-elevation-z8{
+      overflow-x: hidden !important;
+    }
   }
   
   @media screen and (width < 550px) {
