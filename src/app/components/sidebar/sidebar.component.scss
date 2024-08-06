@@ -1,0 +1,21 @@
+.sidebar {
+    position: relative;
+    padding: 30px 25px;
+
+
+    .toggle-view {
+        h4 {
+            flex-grow: 1;
+        }
+    }
+
+    .form__header{
+        margin-bottom: .65em;
+    }
+    
+    .logout{
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+    }
+}

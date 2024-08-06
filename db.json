@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Lika",
+      "email": "l_ovsianikova@cu.edu.ge",
+      "password": "1234",
+      "role": "admin"
+    },
+    {
+      "id": 3,
+      "name": "new user2",
+      "email": "new@gmail.com2",
+      "password": "123123123",
+      "role": "user"
+    },
+    {
+      "id": 4,
+      "name": "hello_world",
+      "email": "helloworld@gmail.com",
+      "password": "123123123",
+      "role": "user"
+    },
+    {
+      "id": 5,
+      "name": "gamarjoba",
+      "email": "gamarjoba@gmail.com",
+      "password": "123123123",
+      "role": "user"
+    }
+  ]
+}

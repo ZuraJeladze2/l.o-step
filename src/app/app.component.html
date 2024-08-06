@@ -1,0 +1,33 @@
+<mat-sidenav-container class="overlay">
+    <mat-sidenav mode="over" position="end" opened="false" #sidebar>
+        <app-sidebar (logoutEvent)="handleLogoutOutput()"></app-sidebar>
+    </mat-sidenav>
+    <mat-sidenav-content style="height: 100vh;">
+        <mat-toolbar class="fixed-nav">
+            <a [routerLink]="['/']" class="app-name">User Management</a>
+
+            <span class="example-spacer"></span>
+            <nav>
+                <ul class="f-row links">
+                    <li><a [routerLink]="['/']">Home</a></li>
+                    <li><a [routerLink]="['/users']">Dashboard</a></li>
+                    <li><a [routerLink]="['/about']">About</a></li>
+                    <li><a [routerLink]="['/contact']">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="f-row">
+                @if(currentUser$ | async; as user){
+                @if(user.role === 'admin'){
+                <a class="navbar__username" [routerLink]="['/', 'view', user.id]"> {{user.name}} (Admin) </a>
+                <app-icon btn name="menu" (click)="sidebar.toggle()" />
+                }
+                @else {
+                <a class="navbar__username" [routerLink]="['/', 'view', user.id]"> {{user.name}} (User) </a>
+                <app-icon fab name="exit_to_app" (click)="logout()"></app-icon>
+                }
+                }
+            </div>
+        </mat-toolbar>
+        <router-outlet />
+    </mat-sidenav-content>
+</mat-sidenav-container>
